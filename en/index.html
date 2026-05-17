@@ -3,14 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Landing Portfolio | Frontend Developer</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Мои работы</h1>
-        <div class="lang-switch">
-            <a href="../ru/">RU</a> | <a href="../en/">EN</a>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">My Works</h1>
+            <div class="lang-switch">
+                <a href="../ru/">RU</a>
+                <a href="../en/" class="active">EN</a>
+            </div>
         </div>
     </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Landing Page Development</h2>
+            <p>Responsive, fast, high-converting pages for your business</p>
+            <a href="#contacts" class="btn">Contact me</a>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <a href="construction/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/construction.jpg" alt="Construction and Renovation">
+                    </div>
+                    <div class="project-info">
+                        <h3>Construction & Renovation</h3>
+                        <p>Landing page for a construction company</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+                <a href="medicine/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/medicine.jpg" alt="Medicine and Cosmetology">
+                    </div>
+                    <div class="project-info">
+                        <h3>Medicine & Cosmetology</h3>
+                        <p>Landing page for a private clinic</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+                <a href="auto/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/auto.jpg" alt="Auto Service and Detailing">
+                    </div>
+                    <div class="project-info">
+                        <h3>Auto Service & Detailing</h3>
+                        <p>Landing page for an auto service</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2>Contacts</h2>
+            <p>Ready to discuss your project</p>
+            <div class="contacts-links">
+                <a target="_blank" href="https://t.me/edhars" class="contact-link">Telegram</a>
+                <a target="_blank" href="https://max.ru/u/f9LHodD0cOIxyUWopK2gSvBLqJE3ezTJCBU2cTevCqjnAez9WMdq8DvqJK0" class="contact-link">Max</a>
+                <a target="_blank" href="https://github.com/edh-0" class="contact-link">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 edh-0</p>
+        </div>
+    </footer>
 </body>
 </html>

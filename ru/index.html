@@ -1,16 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Портфолио лендингов | Frontend разработчик</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Мои работы</h1>
-        <div class="lang-switch">
-            <a href="../ru/">RU</a> | <a href="../en/">EN</a>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Мои работы</h1>
+            <div class="lang-switch">
+                <a href="../ru/" class="active">RU</a>
+                <a href="../en/">EN</a>
+            </div>
         </div>
     </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Адаптивная верстка лендингов</h2>
+            <p>Адаптивные, быстрые, продающие страницы для вашего бизнеса</p>
+            <a href="#contacts" class="btn">Связаться</a>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Проекты</h2>
+            <div class="projects-grid">
+                
+                <a href="construction/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/construction.jpg" alt="Строительство и ремонт">
+                    </div>
+                    <div class="project-info">
+                        <h3>Строительство и ремонт</h3>
+                        <p>Лендинг для строительной компании</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+                <a href="medicine/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/medicine.jpg" alt="Медицина и косметология">
+                    </div>
+                    <div class="project-info">
+                        <h3>Медицина и косметология</h3>
+                        <p>Лендинг для частной клиники</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+                <a href="auto/" class="project-card">
+                    <div class="project-img">
+                        <img src="../img/previews/auto.jpg" alt="Автосервис и детейлинг">
+                    </div>
+                    <div class="project-info">
+                        <h3>Автосервис и детейлинг</h3>
+                        <p>Лендинг для автосервиса</p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p>Готов обсудить ваш проект</p>
+            <div class="contacts-links">
+                <a target="_blank" href="https://t.me/edhars" class="contact-link">Telegram</a>
+                <a target="_blank" href="https://max.ru/u/f9LHodD0cOIxyUWopK2gSvBLqJE3ezTJCBU2cTevCqjnAez9WMdq8DvqJK0" class="contact-link">Max</a>
+                <a target="_blank" href="https://github.com/edh-0" class="contact-link">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 edh-0</p>
+        </div>
+    </footer>
 </body>
 </html>
