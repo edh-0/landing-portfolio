@@ -22,7 +22,7 @@
                 </nav>
                 <div class="header-phone">
                     <a href="tel:+375251234567">+375 (25) 123-45-67</a>
-                    <a href="#" class="btn btn-outline">Заказать звонок</a>
+                    <a href="#contacts" class="btn btn-outline">Заказать звонок</a>
                 </div>
             </div>
         </div>
@@ -100,19 +100,19 @@
                 <div class="services-list">
                     <button class="service-tab service-tab--active" data-service="plumbing" style="background-image: url('img/service-plumbing.jpg');">
                         <span>Сантехника</span>
-                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                        <img src="img/logo-plumbing.svg" class="service-icon">
                     </button>
                     <button class="service-tab" data-service="finishing" style="background-image: url('img/service-finishing.jpg');">
                         <span>Отделочные работы</span>
-                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                        <img src="img/logo-building.svg" class="service-icon">
                     </button>
                     <button class="service-tab" data-service="building" style="background-image: url('img/service-building.jpg');">
                         <span>Строительство домов</span>
-                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                        <img src="img/logo-finishing.svg" class="service-icon">
                     </button>
                     <button class="service-tab" data-service="electrical" style="background-image: url('img/service-electrical.jpg');">
                         <span>Электрика</span>
-                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                        <img src="img/logo-electrical.svg" class="service-icon">
                     </button>
                 </div>
                 <div class="service-detail" id="service-detail"></div>
@@ -154,40 +154,52 @@
                 <div class="section-line"></div>
             </div>
             <div class="gallery-grid">
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-tiles.jpg" alt="Плитка">
-                    <div class="gallery-overlay">
-                        <span>ПЛИТКА</span>
+                <a href="#" class="gallery-card" data-category="tiles">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-tiles-2.jpg" alt="Плитка">
+                        <div class="gallery-overlay">
+                            <span>ПЛИТКА</span>
+                        </div>
                     </div>
                 </a>
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-masonry.jpg" alt="Кладка">
-                    <div class="gallery-overlay">
-                        <span>КЛАДКА</span>
+                <a href="#" class="gallery-card" data-category="masonry">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-masonry.jpg" alt="Кладка">
+                        <div class="gallery-overlay">
+                            <span>КЛАДКА</span>
+                        </div>
+                    </div class="gallery-card">
+                </a>
+                <a href="#" class="gallery-card" data-category="finishing">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-finishing-2.jpg" alt="Отделка">
+                        <div class="gallery-overlay">
+                            <span>ОТДЕЛКА</span>
+                        </div>
                     </div>
                 </a>
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-finishing.jpg" alt="Отделка">
-                    <div class="gallery-overlay">
-                        <span>ОТДЕЛКА</span>
+                <a href="#" class="gallery-card" data-category="roof">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-roof.jpg" alt="Кровля">
+                        <div class="gallery-overlay">
+                            <span>КРОВЛЯ</span>
+                        </div>
                     </div>
                 </a>
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-roof.jpg" alt="Кровля">
-                    <div class="gallery-overlay">
-                        <span>КРОВЛЯ</span>
+                <a href="#" class="gallery-card" data-category="plumbing">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-plumbing.jpg" alt="Сантехника">
+                        <div class="gallery-overlay">
+                            <span>САНТЕХНИКА</span>
+                        </div>
                     </div>
                 </a>
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-plumbing.jpg" alt="Сантехника">
-                    <div class="gallery-overlay">
-                        <span>САНТЕХНИКА</span>
-                    </div>
-                </a>
-                <a href="#" class="gallery-card">
-                    <img src="img/gallery-electrical.jpg" alt="Электрика">
-                    <div class="gallery-overlay">
-                        <span>ЭЛЕКТРИКА</span>
+                <a href="#" class="gallery-card" data-category="electrical">
+                    <div class="gallery-image-wrap">
+                        <img src="img/gallery-electrical.jpg" alt="Электрика">
+                        <div class="gallery-overlay">
+                            <span>ЭЛЕКТРИКА</span>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -239,20 +251,23 @@
                     </tbody>
                 </table>
             </div>
-            <a href="#" class="btn btn-primary prices-download">Скачать весь прайс</a>
+            <a href="docs/price.pdf" class="btn btn-primary prices-download" download>Скачать весь прайс</a>
         </div>
     </section>
 
     <!-- ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== -->
+     <div class="section-header contact-header">
+        <div class="section-line"></div>
+        <h2>СВЯЖИТЕСЬ С НАМИ ИЛИ ОСТАВЬТЕ ЗАЯВКУ</h2>
+        <div class="section-line"></div>
+    </div>
     <section class="contact" id="contacts">
         <div class="container">
             <div class="contact-wrapper">
+                <div class="contact-image-side">
+                    <img src="img/contact-worker.png" alt="Мастер">
+                </div>
                 <div class="contact-form-side">
-                    <div class="section-header">
-                        <div class="section-line"></div>
-                        <h2>СВЯЖИТЕСЬ С НАМИ ИЛИ ОСТАВЬТЕ ЗАЯВКУ</h2>
-                        <div class="section-line"></div>
-                    </div>
                     <form class="contact-form">
                         <div class="form-row">
                             <span class="form-label">ЗАПОЛНИТЕ ФОРМУ</span>
@@ -267,9 +282,6 @@
                             <span>Принимаю условия Политики конфиденциальности</span>
                         </label>
                     </form>
-                </div>
-                <div class="contact-image-side">
-                    <img src="img/contact-worker.png" alt="Мастер">
                 </div>
             </div>
         </div>
@@ -291,7 +303,7 @@
                     <p>УНП 11111111111</p>
                 </div>
                 <div class="footer-col footer-col--right">
-                    <p class="footer-copy">© Safehouse 2021</p>
+                    <p class="footer-copy">© Safehouse 2026</p>
                 </div>
             </div>
         </div>
