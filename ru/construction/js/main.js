@@ -433,3 +433,23 @@ galleryCards.forEach(card => {
         openLightbox(category);
     });
 });
+
+// ===== БУРГЕР-МЕНЮ =====
+const burger = document.querySelector('.burger');
+const headerRight = document.querySelector('.header-right');
+const navLinks = document.querySelectorAll('.nav a');
+
+burger.addEventListener('click', function() {
+    this.classList.toggle('burger--open');
+    headerRight.classList.toggle('header-right--open');
+    document.body.style.overflow = headerRight.classList.contains('header-right--open') ? 'hidden' : '';
+});
+
+// Закрытие меню при клике на ссылку
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        burger.classList.remove('burger--open');
+        headerRight.classList.remove('header-right--open');
+        document.body.style.overflow = '';
+    });
+});
