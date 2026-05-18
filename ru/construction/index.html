@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Строительство и ремонт в Гомеле | Safehouse</title>
+    <title>Строительство и ремонт в Вашем городе | Safehouse</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
                 <img src="img/logo.svg" alt="Safehouse">
             </a>
-            <nav class="nav">
-                <a href="#services">Услуги</a>
-                <a href="#prices">Цены</a>
-                <a href="#portfolio">Портфолио</a>
-                <a href="#contacts">Контакты</a>
-            </nav>
-            <div class="header-phone">
-                <a href="tel:+375251234567">+375 (25) 123-45-67</a>
-                <a href="#" class="btn btn-outline">Заказать звонок</a>
+            <div class="header-right">
+                <nav class="nav">
+                    <a href="#services">Услуги</a>
+                    <a href="#prices">Цены</a>
+                    <a href="#portfolio">Портфолио</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+                <div class="header-phone">
+                    <a href="tel:+375251234567">+375 (25) 123-45-67</a>
+                    <a href="#" class="btn btn-outline">Заказать звонок</a>
+                </div>
             </div>
         </div>
     </header>
@@ -31,12 +32,27 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Строительство<br>и ремонт в Гомеле</h1>
+                <h1>Строительство<br>и ремонт в Вашем городе</h1>
                 <p class="hero-subtitle">Надёжное будущее строим вместе</p>
-                <a href="#form" class="btn btn-primary">Получить консультацию</a>
+                <a href="#contacts" class="btn btn-primary">Получить консультацию</a>
             </div>
-            <div class="hero-image">
-                <img src="img/hero-house.png" alt="Дом">
+            <div class="hero-slider">
+                <div class="hero-slides">
+                    <img src="img/hero-1.jpg" alt="Дом 1" class="active">
+                    <img src="img/hero-2.jpg" alt="Дом 2">
+                    <img src="img/hero-3.jpg" alt="Дом 3">
+                    <img src="img/hero-4.jpg" alt="Дом 4">
+                    <img src="img/hero-5.jpg" alt="Дом 5">
+                </div>
+                <button class="slider-arrow slider-arrow--prev">&#10094;</button>
+                <button class="slider-arrow slider-arrow--next">&#10095;</button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -77,59 +93,29 @@
     <!-- ===== НАШИ УСЛУГИ ===== -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-header">
-                <div class="section-line"></div>
+            <div class="section-header section-header--underline">
                 <h2>НАШИ УСЛУГИ</h2>
-                <div class="section-line"></div>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="img/service-finishing.jpg" alt="Отделочные работы">
-                        <div class="service-overlay">
-                            <span>Отделочные работы</span>
-                        </div>
-                    </div>
+                <div class="services-list">
+                    <button class="service-tab service-tab--active" data-service="plumbing" style="background-image: url('img/service-plumbing.jpg');">
+                        <span>Сантехника</span>
+                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                    </button>
+                    <button class="service-tab" data-service="finishing" style="background-image: url('img/service-finishing.jpg');">
+                        <span>Отделочные работы</span>
+                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                    </button>
+                    <button class="service-tab" data-service="building" style="background-image: url('img/service-building.jpg');">
+                        <span>Строительство домов</span>
+                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                    </button>
+                    <button class="service-tab" data-service="electrical" style="background-image: url('img/service-electrical.jpg');">
+                        <span>Электрика</span>
+                        <svg class="service-icon" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                    </button>
                 </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="img/service-building.jpg" alt="Строительство домов">
-                        <div class="service-overlay">
-                            <span>Строительство домов</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="img/service-electrical.jpg" alt="Электрика">
-                        <div class="service-overlay">
-                            <span>Электрика</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card service-card--active">
-                    <div class="service-img">
-                        <img src="img/service-plumbing.jpg" alt="Сантехника">
-                        <div class="service-overlay">
-                            <span>Сантехника</span>
-                        </div>
-                    </div>
-                    <div class="service-detail">
-                        <h3>Сантехника</h3>
-                        <ul>
-                            <li>Перенос и установка счётчиков</li>
-                            <li>Монтаж и ремонт водопровода</li>
-                            <li>Монтаж отопления</li>
-                            <li>Монтаж канализации</li>
-                            <li>Замена и перенос полотенцесушителя</li>
-                            <li>Установка инсталляций</li>
-                            <li>Установка сантехоборудования</li>
-                            <li>Замена батарей отопления</li>
-                            <li>Замена труб в ванной и туалете</li>
-                            <li>Монтаж трубопроводов ПВХ</li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="service-detail" id="service-detail"></div>
             </div>
         </div>
     </section>
@@ -311,5 +297,6 @@
         </div>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
 </html>
