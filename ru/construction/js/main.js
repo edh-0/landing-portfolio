@@ -445,7 +445,6 @@ burger.addEventListener('click', function() {
     document.body.style.overflow = headerRight.classList.contains('header-right--open') ? 'hidden' : '';
 });
 
-// Закрытие меню при клике на ссылку
 navLinks.forEach(link => {
     link.addEventListener('click', function() {
         burger.classList.remove('burger--open');
