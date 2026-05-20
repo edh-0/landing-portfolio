@@ -1,8 +1,6 @@
-// Интерактивная карта охвата
-
 /**
- * CoverageMap — интерактивная карта охвата
- * Упрощённая карта с городами-точками на Canvas
+ * CoverageMap — абстрактная визуализация охвата
+ * Концентрические волны, топографические линии, градиентная сеть
  */
 
 export class CoverageMap {
@@ -14,6 +12,7 @@ export class CoverageMap {
     this.hoveredCity = null;
     this.animationId = null;
     this.time = 0;
+    this.wavePhase = 0;
 
     this.init();
   }
@@ -38,38 +37,40 @@ export class CoverageMap {
   }
 
   createCities() {
-    // Координаты в процентах — адаптируются под любой размер
+    // Города — теперь это «узлы сети» с весами
     const cityData = [
-      { name: 'Москва', x: 13, y: 48, type: 'active', patients: '85 000+' },
-      { name: 'Санкт-Петербург', x: 14, y: 35, type: 'active', patients: '42 000+' },
-      { name: 'Новосибирск', x: 46, y: 62, type: 'active', patients: '18 000+' },
-      { name: 'Екатеринбург', x: 32, y: 52, type: 'active', patients: '22 000+' },
-      { name: 'Казань', x: 25, y: 48, type: 'active', patients: '16 000+' },
-      { name: 'Нижний Новгород', x: 20, y: 44, type: 'active', patients: '14 000+' },
-      { name: 'Челябинск', x: 31, y: 57, type: 'active', patients: '11 000+' },
-      { name: 'Самара', x: 26, y: 56, type: 'active', patients: '10 000+' },
-      { name: 'Омск', x: 42, y: 60, type: 'active', patients: '9 000+' },
-      { name: 'Ростов-на-Дону', x: 16, y: 65, type: 'active', patients: '12 000+' },
-      { name: 'Уфа', x: 28, y: 53, type: 'active', patients: '8 000+' },
-      { name: 'Красноярск', x: 52, y: 55, type: 'active', patients: '7 000+' },
-      { name: 'Воронеж', x: 14, y: 58, type: 'active', patients: '6 000+' },
-      { name: 'Пермь', x: 30, y: 45, type: 'active', patients: '5 000+' },
-      { name: 'Волгоград', x: 18, y: 64, type: 'active', patients: '5 000+' },
-      { name: 'Краснодар', x: 12, y: 70, type: 'active', patients: '7 000+' },
-      { name: 'Тюмень', x: 36, y: 48, type: 'soon', patients: null },
-      { name: 'Иркутск', x: 58, y: 63, type: 'soon', patients: null },
-      { name: 'Хабаровск', x: 78, y: 58, type: 'soon', patients: null },
-      { name: 'Владивосток', x: 80, y: 70, type: 'soon', patients: null },
-      { name: 'Калининград', x: 4, y: 38, type: 'soon', patients: null },
-      { name: 'Сочи', x: 10, y: 74, type: 'soon', patients: null },
+      { name: 'Москва', x: 20, y: 42, type: 'active', patients: '85 000+', weight: 3 },
+      { name: 'Санкт-Петербург', x: 18, y: 30, type: 'active', patients: '42 000+', weight: 3 },
+      { name: 'Новосибирск', x: 55, y: 58, type: 'active', patients: '18 000+', weight: 2 },
+      { name: 'Екатеринбург', x: 38, y: 48, type: 'active', patients: '22 000+', weight: 2 },
+      { name: 'Казань', x: 30, y: 45, type: 'active', patients: '16 000+', weight: 2 },
+      { name: 'Нижний Новгород', x: 24, y: 40, type: 'active', patients: '14 000+', weight: 2 },
+      { name: 'Челябинск', x: 37, y: 54, type: 'active', patients: '11 000+', weight: 1 },
+      { name: 'Самара', x: 31, y: 52, type: 'active', patients: '10 000+', weight: 1 },
+      { name: 'Омск', x: 50, y: 56, type: 'active', patients: '9 000+', weight: 1 },
+      { name: 'Ростов-на-Дону', x: 18, y: 62, type: 'active', patients: '12 000+', weight: 2 },
+      { name: 'Уфа', x: 34, y: 50, type: 'active', patients: '8 000+', weight: 1 },
+      { name: 'Красноярск', x: 62, y: 52, type: 'active', patients: '7 000+', weight: 1 },
+      { name: 'Воронеж', x: 17, y: 54, type: 'active', patients: '6 000+', weight: 1 },
+      { name: 'Пермь', x: 35, y: 40, type: 'active', patients: '5 000+', weight: 1 },
+      { name: 'Волгоград', x: 21, y: 60, type: 'active', patients: '5 000+', weight: 1 },
+      { name: 'Краснодар', x: 14, y: 66, type: 'active', patients: '7 000+', weight: 1 },
+
+      // Ожидаемые — меньший вес
+      { name: 'Тюмень', x: 40, y: 46, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Иркутск', x: 66, y: 58, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Хабаровск', x: 80, y: 54, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Владивосток', x: 84, y: 64, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Калининград', x: 4, y: 34, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Сочи', x: 13, y: 70, type: 'soon', patients: null, weight: 0.5 },
+      { name: 'Якутск', x: 72, y: 32, type: 'soon', patients: null, weight: 0.5 },
     ];
 
     this.cities = cityData.map(city => ({
       ...city,
-      // Преобразуем проценты в пиксели
       px: (city.x / 100) * this.width,
       py: (city.y / 100) * this.height,
-      radius: city.type === 'active' ? 4 : 3,
+      radius: 4,
       pulse: Math.random() * Math.PI * 2,
     }));
   }
@@ -77,7 +78,6 @@ export class CoverageMap {
   bindEvents() {
     window.addEventListener('resize', () => {
       this.resize();
-      // Пересчитываем координаты
       this.cities.forEach(city => {
         city.px = (city.x / 100) * this.width;
         city.py = (city.y / 100) * this.height;
@@ -86,22 +86,17 @@ export class CoverageMap {
 
     this.canvas.addEventListener('mousemove', (e) => {
       const rect = this.canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      this.checkHover(mx, my);
+      this.checkHover(e.clientX - rect.left, e.clientY - rect.top);
     });
 
     this.canvas.addEventListener('mouseleave', () => {
       this.hoveredCity = null;
     });
 
-    // Сенсорные устройства
     this.canvas.addEventListener('touchmove', (e) => {
       e.preventDefault();
       const rect = this.canvas.getBoundingClientRect();
-      const mx = e.touches[0].clientX - rect.left;
-      const my = e.touches[0].clientY - rect.top;
-      this.checkHover(mx, my);
+      this.checkHover(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
     });
 
     this.canvas.addEventListener('touchend', () => {
@@ -111,58 +106,81 @@ export class CoverageMap {
 
   checkHover(mx, my) {
     this.hoveredCity = null;
-
     for (const city of this.cities) {
       const dx = mx - city.px;
       const dy = my - city.py;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 24) {
+      if (Math.sqrt(dx * dx + dy * dy) < 20) {
         this.hoveredCity = city;
         break;
       }
     }
-
-    // Меняем курсор
     this.canvas.style.cursor = this.hoveredCity ? 'pointer' : 'default';
   }
 
   animate() {
     this.animationId = requestAnimationFrame(() => this.animate());
     this.time += 0.016;
+    this.wavePhase += 0.008;
 
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    this.drawGrid();
-    this.drawConnections();
+    this.drawTopography();
+    this.drawGradientNetwork();
+    this.drawWaves();
     this.drawCities();
     this.drawTooltip();
   }
 
-  drawGrid() {
-    // Лёгкая сетка для футуристичного вида
-    this.ctx.strokeStyle = 'rgba(77, 208, 200, 0.03)';
-    this.ctx.lineWidth = 0.5;
+  drawTopography() {
+    // Топографические линии — расходящиеся от крупных узлов
+    const majorCities = this.cities.filter(c => c.weight >= 2);
 
-    const step = 40;
-    for (let x = step; x < this.width; x += step) {
-      this.ctx.beginPath();
-      this.ctx.moveTo(x, 0);
-      this.ctx.lineTo(x, this.height);
-      this.ctx.stroke();
+    for (const city of majorCities) {
+      const ringCount = 5;
+      for (let i = 1; i <= ringCount; i++) {
+        const radius = i * 35 + Math.sin(this.time * 0.5 + i) * 4;
+        const alpha = 0.06 - i * 0.01;
+
+        this.ctx.beginPath();
+        this.ctx.arc(city.px, city.py, radius, 0, Math.PI * 2);
+        this.ctx.strokeStyle = `rgba(77, 208, 200, ${alpha})`;
+        this.ctx.lineWidth = 0.5;
+        this.ctx.stroke();
+      }
     }
-    for (let y = step; y < this.height; y += step) {
-      this.ctx.beginPath();
-      this.ctx.moveTo(0, y);
-      this.ctx.lineTo(this.width, y);
-      this.ctx.stroke();
+
+    // Топографические линии — общие, по всему полю
+    const gridStep = 50;
+    const activeCities = this.cities.filter(c => c.type === 'active');
+
+    for (let x = gridStep; x < this.width; x += gridStep) {
+      for (let y = gridStep; y < this.height; y += gridStep) {
+        // Вычисляем «высоту» точки как сумму влияния всех городов
+        let elevation = 0;
+        for (const city of activeCities) {
+          const dx = x - city.px;
+          const dy = y - city.py;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          elevation += (city.weight * 80) / (dist + 40);
+        }
+
+        // Рисуем точку с яркостью, зависящей от «высоты»
+        const alpha = Math.min(elevation * 0.015, 0.2);
+        if (alpha > 0.02) {
+          this.ctx.beginPath();
+          this.ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(77, 208, 200, ${alpha})`;
+          this.ctx.fill();
+        }
+      }
     }
   }
 
-  drawConnections() {
-    // Связи между активными городами
+  drawGradientNetwork() {
+    // Сеть между городами с градиентной заливкой областей
     const activeCities = this.cities.filter(c => c.type === 'active');
 
+    // Триангуляция Делоне упрощённая — соединяем ближайшие
     for (let i = 0; i < activeCities.length; i++) {
       for (let j = i + 1; j < activeCities.length; j++) {
         const a = activeCities[i];
@@ -171,15 +189,54 @@ export class CoverageMap {
         const dy = a.py - b.py;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Соединяем только относительно близкие
-        if (dist < 180) {
-          const opacity = 0.08 * (1 - dist / 180);
+        // Соединяем города на расстоянии до 200px
+        if (dist < 200) {
+          const midX = (a.px + b.px) / 2;
+          const midY = (a.py + b.py) / 2;
+
+          // Градиент вдоль линии
+          const gradient = this.ctx.createLinearGradient(a.px, a.py, b.px, b.py);
+          const alphaA = a.weight * 0.12;
+          const alphaB = b.weight * 0.12;
+          gradient.addColorStop(0, `rgba(77, 208, 200, ${alphaA})`);
+          gradient.addColorStop(1, `rgba(77, 208, 200, ${alphaB})`);
+
           this.ctx.beginPath();
           this.ctx.moveTo(a.px, a.py);
           this.ctx.lineTo(b.px, b.py);
-          this.ctx.strokeStyle = `rgba(77, 208, 200, ${opacity})`;
-          this.ctx.lineWidth = 0.5;
+          this.ctx.strokeStyle = gradient;
+          this.ctx.lineWidth = a.weight + b.weight;
           this.ctx.stroke();
+
+          // Узлы на середине
+          this.ctx.beginPath();
+          this.ctx.arc(midX, midY, 2, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(77, 208, 200, 0.3)`;
+          this.ctx.fill();
+        }
+      }
+    }
+  }
+
+  drawWaves() {
+    // Концентрические волны от групп городов
+    const hubs = this.cities.filter(c => c.weight >= 2);
+
+    for (const hub of hubs) {
+      const waveCount = 3;
+      for (let i = 0; i < waveCount; i++) {
+        const baseRadius = 60 + i * 50;
+        const radius = baseRadius + ((this.wavePhase * 60 + i * 20) % 150);
+
+        if (radius < 150) {
+          const alpha = (1 - radius / 150) * 0.1;
+          this.ctx.beginPath();
+          this.ctx.arc(hub.px, hub.py, radius, 0, Math.PI * 2);
+          this.ctx.strokeStyle = `rgba(77, 208, 200, ${alpha})`;
+          this.ctx.lineWidth = 1;
+          this.ctx.setLineDash([4, 12]);
+          this.ctx.stroke();
+          this.ctx.setLineDash([]);
         }
       }
     }
@@ -190,31 +247,33 @@ export class CoverageMap {
       const isHovered = this.hoveredCity === city;
       const isActive = city.type === 'active';
 
-      // Пульсация
-      city.pulse += isActive ? 0.03 : 0.015;
-      const pulseScale = 1 + Math.sin(city.pulse) * 0.4;
+      city.pulse += isActive ? 0.04 : 0.02;
+      const pulseScale = 1 + Math.sin(city.pulse) * 0.5;
 
-      // Внешнее свечение
-      const glowRadius = isActive ? 16 : 10;
-      const glowAlpha = isActive ? 0.25 : 0.12;
-      const glowColor = isActive
-        ? `rgba(77, 208, 200, ${glowAlpha})`
-        : `rgba(45, 157, 146, ${glowAlpha})`;
+      // Размер зависит от веса
+      const baseRadius = 3 + city.weight * 2;
 
-      const gradient = this.ctx.createRadialGradient(
-        city.px, city.py, 0,
-        city.px, city.py, glowRadius * (isHovered ? 1.8 : 1)
-      );
-      gradient.addColorStop(0, glowColor);
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      // Внешнее свечение — несколько слоёв
+      for (let layer = 2; layer >= 0; layer--) {
+        const glowRadius = baseRadius * (layer + 1) * 3 * (isHovered ? 1.6 : 1);
+        const alpha = (0.15 - layer * 0.05) * (isHovered ? 1.5 : 1);
 
-      this.ctx.beginPath();
-      this.ctx.arc(city.px, city.py, glowRadius * (isHovered ? 1.8 : 1), 0, Math.PI * 2);
-      this.ctx.fillStyle = gradient;
-      this.ctx.fill();
+        const gradient = this.ctx.createRadialGradient(
+          city.px, city.py, 0,
+          city.px, city.py, glowRadius
+        );
+        const color = isActive ? '77, 208, 200' : '45, 157, 146';
+        gradient.addColorStop(0, `rgba(${color}, ${alpha})`);
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
-      // Точка города
-      const radius = city.radius * (isHovered ? 1.8 : 1) * pulseScale;
+        this.ctx.beginPath();
+        this.ctx.arc(city.px, city.py, glowRadius, 0, Math.PI * 2);
+        this.ctx.fillStyle = gradient;
+        this.ctx.fill();
+      }
+
+      // Ядро
+      const radius = baseRadius * (isHovered ? 1.8 : 1) * pulseScale;
       this.ctx.beginPath();
       this.ctx.arc(city.px, city.py, radius, 0, Math.PI * 2);
 
@@ -223,16 +282,16 @@ export class CoverageMap {
       } else {
         this.ctx.fillStyle = isHovered
           ? 'rgba(45, 157, 146, 0.8)'
-          : 'rgba(45, 157, 146, 0.45)';
+          : 'rgba(45, 157, 146, 0.4)';
       }
       this.ctx.fill();
 
-      // Кольцо вокруг ховер-города
+      // Кольцо вокруг ховера
       if (isHovered) {
         this.ctx.beginPath();
-        this.ctx.arc(city.px, city.py, radius + 8, 0, Math.PI * 2);
-        this.ctx.strokeStyle = 'rgba(77, 208, 200, 0.5)';
-        this.ctx.lineWidth = 1;
+        this.ctx.arc(city.px, city.py, radius + 10, 0, Math.PI * 2);
+        this.ctx.strokeStyle = 'rgba(77, 208, 200, 0.6)';
+        this.ctx.lineWidth = 1.5;
         this.ctx.stroke();
       }
     }
@@ -240,12 +299,9 @@ export class CoverageMap {
 
   drawTooltip() {
     if (!this.hoveredCity) return;
-
     const city = this.hoveredCity;
     const tx = city.px;
-    const ty = city.py - 28;
-
-    // Фон
+    const ty = city.py - 30;
     const text = city.type === 'active'
       ? `${city.name} — ${city.patients} пациентов`
       : `${city.name} — скоро запуск`;
@@ -255,15 +311,11 @@ export class CoverageMap {
     const padding = 10;
     const boxWidth = textWidth + padding * 2;
     const boxHeight = 30;
-
     let boxX = tx - boxWidth / 2;
     const boxY = ty - boxHeight;
-
-    // Не выходим за края
     if (boxX < 10) boxX = 10;
     if (boxX + boxWidth > this.width - 10) boxX = this.width - boxWidth - 10;
 
-    // Подложка
     this.ctx.fillStyle = 'rgba(16, 22, 30, 0.95)';
     this.ctx.strokeStyle = 'rgba(77, 208, 200, 0.5)';
     this.ctx.lineWidth = 1;
@@ -272,7 +324,6 @@ export class CoverageMap {
     this.ctx.fill();
     this.ctx.stroke();
 
-    // Текст
     this.ctx.fillStyle = '#e9ecef';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
