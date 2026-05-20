@@ -736,7 +736,7 @@ section {
 
 .security__visual {
   width: 100%;
-  height: 380px;
+  min-height: 380px;
   background: var(--bg-tertiary);
   border-radius: var(--radius-xl);
   border: 1px solid var(--glass-border);
@@ -1011,10 +1011,6 @@ section {
     display: flex !important;
   }
 
-    .header__nav--open {
-    display: flex !important;
-  }
-
   .header__nav--open .header__nav-list {
     flex-direction: column;
     gap: var(--spacing-lg);
@@ -1059,7 +1055,7 @@ section {
   }
 
   .security__visual {
-    height: 300px;
+    min-height: 300px;
   }
 
   .tariffs__grid {
@@ -1175,7 +1171,7 @@ section {
   }
 
   .security__visual {
-    height: 220px;
+    min-height: 220px;
   }
 
   .coverage__map {
