@@ -393,6 +393,261 @@ section {
 }
 
 /* ============================================
+   APP SIMULATION — СТИЛИ ЭКРАНОВ
+   ============================================ */
+
+.app-screen__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.app-screen__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.app-screen__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.app-screen__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  overflow-y: auto;
+}
+
+.app-screen__body--center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.app-screen__question {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Сетка симптомов */
+.app-screen__symptoms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+.app-symptom {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.app-symptom:hover {
+  border-color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+}
+
+.app-symptom--selected {
+  border-color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+.app-symptom__icon {
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.app-screen__custom {
+  margin-top: var(--spacing-sm);
+}
+
+.app-screen__input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.app-screen__input::placeholder {
+  color: var(--text-muted);
+}
+
+.app-screen__input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.app-screen__next-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+  margin-top: auto;
+  transition: all var(--transition-fast);
+}
+
+.app-screen__next-btn:hover {
+  background: var(--accent-mint);
+}
+
+/* ИИ-анализ */
+.app-screen__ai-ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.app-screen__ai-ring svg {
+  transform: rotate(-90deg);
+}
+
+.app-screen__ai-ring circle {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.app-screen__ai-icon {
+  position: absolute;
+  font-size: 28px;
+}
+
+.app-screen__ai-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.app-screen__ai-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.app-screen__ai-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent-cyan);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* Врач */
+.app-screen__doctor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.app-screen__doctor-avatar {
+  position: relative;
+  font-size: 56px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.app-screen__doctor-status {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background: var(--status-green);
+  border: 2px solid var(--bg-tertiary);
+  border-radius: 50%;
+}
+
+@keyframes pulse-status {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+}
+
+.app-screen__doctor-name {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.app-screen__doctor-spec {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.app-screen__doctor-rating {
+  font-size: var(--text-sm);
+  color: var(--status-amber);
+}
+
+.app-screen__call-info {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.app-screen__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+}
+
+.app-screen__call-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.app-screen__call-btn--video {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+}
+
+.app-screen__call-btn--video:hover {
+  background: var(--accent-mint);
+}
+
+.app-screen__call-btn--chat {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+}
+
+.app-screen__call-btn--chat:hover {
+  border-color: var(--accent-cyan);
+}
+
+/* ============================================
    COVERAGE / MAP
    ============================================ */
 
@@ -655,19 +910,76 @@ section {
 }
 
 /* ============================================
-   ГЛИТЧ-ЭФФЕКТ (базовая заготовка)
+   ГЛИТЧ-ЭФФЕКТ (полная версия)
    ============================================ */
 
-[data-glitch]:hover {
-  animation: glitch-skew 0.4s ease-in-out;
+.tariff-card {
+  overflow: hidden;
 }
 
-@keyframes glitch-skew {
-  0%, 100% { transform: translate(0); }
-  20% { transform: translate(-2px, 1px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-1px, -1px); }
-  80% { transform: translate(1px, 1px); }
+.tariff-card__inner {
+  transition: opacity var(--transition-fast);
+}
+
+/* Слои глитча */
+.glitch-layer {
+  position: absolute;
+  top: var(--spacing-xl);
+  left: var(--spacing-xl);
+  right: var(--spacing-xl);
+  bottom: var(--spacing-xl);
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform 0.1s ease;
+  z-index: 1;
+}
+
+/* Красный канал — смещение влево */
+.glitch-layer--red {
+  color: rgba(255, 70, 70, 0.6);
+  filter: none;
+}
+
+.glitch-layer--red * {
+  color: rgba(255, 70, 70, 0.6) !important;
+  -webkit-text-fill-color: rgba(255, 70, 70, 0.6);
+}
+
+.glitch-layer--red .tariff-card__price-value,
+.glitch-layer--red .tariff-card__features li::before,
+.glitch-layer--red .btn {
+  color: rgba(255, 70, 70, 0.6) !important;
+  background: transparent !important;
+  border-color: rgba(255, 70, 70, 0.4) !important;
+  -webkit-text-fill-color: rgba(255, 70, 70, 0.6);
+}
+
+/* Синий канал — смещение вправо */
+.glitch-layer--blue {
+  color: rgba(70, 130, 255, 0.6);
+}
+
+.glitch-layer--blue * {
+  color: rgba(70, 130, 255, 0.6) !important;
+  -webkit-text-fill-color: rgba(70, 130, 255, 0.6);
+}
+
+.glitch-layer--blue .tariff-card__price-value,
+.glitch-layer--blue .tariff-card__features li::before,
+.glitch-layer--blue .btn {
+  color: rgba(70, 130, 255, 0.6) !important;
+  background: transparent !important;
+  border-color: rgba(70, 130, 255, 0.4) !important;
+  -webkit-text-fill-color: rgba(70, 130, 255, 0.6);
+}
+
+/* Мерцание карточки при глитче */
+.tariff-card--glitching {
+  animation: glitch-flicker 0.15s infinite;
+}
+
+@keyframes glitch-flicker {
+  0%, 100% { box-shadow: var(--glow-soft); }
+  50% { box-shadow: 0 0 20px rgba(255, 70, 70, 0.3), 0 0 20px rgba(70, 130, 255, 0.3); }
 }
 
 /* ============================================
