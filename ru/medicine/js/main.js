@@ -34,6 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
     new GlitchEffects(glitchCards);
   }
 
+    document.querySelectorAll('.tariff-card .btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Выбрано';
+            btn.style.background = 'var(--status-green)';
+            btn.style.color = 'var(--bg-primary)';
+            btn.style.borderColor = 'var(--status-green)';
+
+            setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+            }, 3200);
+        });
+    });
+
   // Бургер-меню
   const burgerBtn = document.getElementById('burger-btn');
   const headerNav = document.querySelector('.header__nav');

@@ -420,9 +420,11 @@ section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   padding-top: var(--spacing-md);
   overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0; 
 }
 
 .app-screen__body--center {
@@ -440,7 +442,7 @@ section {
 /* Сетка симптомов */
 .app-screen__symptoms {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--spacing-sm);
 }
 
@@ -783,7 +785,7 @@ section {
 
 .tariff-card__badge {
   position: absolute;
-  top: -14px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
@@ -1104,7 +1106,7 @@ section {
 
   .app-simulation__frame {
     max-height: 400px;
-    max-width: 280px;
+    max-width: 300px;
   }
 
   .section-header__title br {
@@ -1124,6 +1126,10 @@ section {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .app-screen__symptoms {
+  grid-template-columns: 1fr;
+}
 }
 
 /* ============================================
@@ -1162,8 +1168,8 @@ section {
   }
 
   .app-simulation__frame {
-    max-height: 360px;
-    max-width: 240px;
+    max-height: 380px;
+    max-width: 260px;
   }
 
   .app-step {
@@ -1186,6 +1192,29 @@ section {
     flex-direction: column;
     gap: var(--spacing-sm);
   }
+
+    .app-symptom {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--text-xs);
+    }
+
+    .app-symptom__icon {
+        font-size: var(--text-base);
+    }
+
+    .app-screen__input {
+        font-size: var(--text-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .app-screen__next-btn {
+        padding: var(--spacing-sm);
+        font-size: var(--text-xs);
+    }
+
+    .app-screen__screen {
+        padding: var(--spacing-md);
+    }
 }
 
 /* ============================================
@@ -1201,8 +1230,8 @@ section {
   }
 
   .app-simulation__frame {
-    max-height: 320px;
-    max-width: 200px;
+    max-height: 340px;
+    max-width: 220px;
   }
 
   .btn--lg {
