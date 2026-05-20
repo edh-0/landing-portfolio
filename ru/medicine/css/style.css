@@ -996,6 +996,34 @@ section {
 
   .header__nav {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 14, 20, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: var(--spacing-lg) var(--container-padding);
+  }
+
+  .header__nav--open {
+    display: flex !important;
+  }
+
+    .header__nav--open {
+    display: flex !important;
+  }
+
+  .header__nav--open .header__nav-list {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    width: 100%;
+  }
+
+  .header__nav--open .header__nav-link {
+    font-size: var(--text-lg);
+    padding: var(--spacing-sm) 0;
   }
 
   .header__burger {
