@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MedTech — телемедицина будущего. Консультации онлайн, ИИ-диагностика, защита данных.">
+
+  <title>MedFuture — Медицина будущего уже здесь</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header / навигация -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <span class="header__logo-text">Med</span><span class="header__logo-accent">Future</span>
+      </a>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="#how-it-works" class="header__nav-link">Как работает</a></li>
+          <li><a href="#coverage" class="header__nav-link">Охват</a></li>
+          <li><a href="#tariffs" class="header__nav-link">Тарифы</a></li>
+          <li><a href="#security" class="header__nav-link">Безопасность</a></li>
+        </ul>
+      </nav>
+      <button class="header__cta btn btn--sm">Войти</button>
+      <button class="header__burger" aria-label="Меню" id="burger-btn">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" id="hero-canvas-container">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+    <div class="container hero__content">
+      <span class="hero__badge">Запуск 2026</span>
+      <h1 class="hero__title">
+        Медицина<br>будущего <span class="hero__title-accent">уже здесь</span>
+      </h1>
+      <p class="hero__subtitle">
+        Консультации с врачом за 60 секунд. ИИ-ассистент, рецепты онлайн, полная защита данных.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--primary btn--lg">Попробовать бесплатно</button>
+        <button class="btn btn--outline btn--lg">Смотреть demo</button>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-value">250 000+</span>
+          <span class="hero__stat-label">пациентов</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">3 мин</span>
+          <span class="hero__stat-label">среднее ожидание</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">99,9%</span>
+          <span class="hero__stat-label">защита данных</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как работает — симуляция приложения -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Процесс</span>
+        <h2 class="section-header__title">Три шага<br>до здоровья</h2>
+        <p class="section-header__desc">Попробуйте интерфейс прямо сейчас</p>
+      </div>
+
+      <div class="app-simulation" id="app-simulation">
+        <div class="app-simulation__frame">
+          <div class="app-simulation__screen" id="app-screen">
+            <!-- Заполним в JS -->
+          </div>
+        </div>
+        <div class="app-simulation__steps" id="app-steps">
+          <button class="app-step active" data-step="0">
+            <span class="app-step__num">01</span>
+            <span class="app-step__title">Выберите симптом</span>
+          </button>
+          <button class="app-step" data-step="1">
+            <span class="app-step__num">02</span>
+            <span class="app-step__title">ИИ-анализ</span>
+          </button>
+          <button class="app-step" data-step="2">
+            <span class="app-step__num">03</span>
+            <span class="app-step__title">Связь с врачом</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Охват — карта -->
+  <section class="coverage" id="coverage">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">География</span>
+        <h2 class="section-header__title">Работаем по всей<br>стране</h2>
+        <p class="section-header__desc">Более 120 городов и пополняется ежемесячно</p>
+      </div>
+
+      <div class="coverage__map-container">
+        <div class="coverage__map" id="coverage-map">
+          <!-- Карта — Canvas / SVG — добавим в JS -->
+        </div>
+        <div class="coverage__legend">
+          <div class="coverage__legend-item">
+            <span class="coverage__dot coverage__dot--active"></span> Активные города
+          </div>
+          <div class="coverage__legend-item">
+            <span class="coverage__dot coverage__dot--soon"></span> Скоро запуск
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Безопасность -->
+  <section class="security" id="security">
+    <div class="container">
+      <div class="security__grid">
+        <div class="security__content">
+          <div class="section-header section-header--left">
+            <span class="section-header__label">Безопасность</span>
+            <h2 class="section-header__title">Ваши данные<br>под защитой</h2>
+          </div>
+          <ul class="security__list">
+            <li class="security__list-item">
+              <span class="security__icon">🔐</span>
+              <span>Сквозное шифрование AES-256</span>
+            </li>
+            <li class="security__list-item">
+              <span class="security__icon">🏥</span>
+              <span>Соответствие HIPAA и GDPR</span>
+            </li>
+            <li class="security__list-item">
+              <span class="security__icon">🛡️</span>
+              <span>Данные не передаются третьим лицам</span>
+            </li>
+          </ul>
+        </div>
+        <div class="security__visual" id="security-canvas-container">
+          <canvas id="security-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Тарифы -->
+  <section class="tariffs" id="tariffs">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Тарифы</span>
+        <h2 class="section-header__title">Выберите<br>свой план</h2>
+        <p class="section-header__desc">От разовой консультации до безлимитного сопровождения</p>
+      </div>
+
+      <div class="tariffs__grid">
+        <!-- Карточка 1: Базовый -->
+        <article class="tariff-card" data-glitch>
+          <div class="tariff-card__inner">
+            <h3 class="tariff-card__name">Базовый</h3>
+            <div class="tariff-card__price">
+              <span class="tariff-card__price-value">990 ₽</span>
+              <span class="tariff-card__price-period">/ месяц</span>
+            </div>
+            <ul class="tariff-card__features">
+              <li>3 консультации в месяц</li>
+              <li>ИИ-симптоматика</li>
+              <li>Чат с врачом</li>
+            </ul>
+            <button class="btn btn--outline btn--full">Выбрать</button>
+          </div>
+        </article>
+
+        <!-- Карточка 2: Стандарт (рекомендован) -->
+        <article class="tariff-card tariff-card--featured" data-glitch>
+          <div class="tariff-card__badge">Популярный</div>
+          <div class="tariff-card__inner">
+            <h3 class="tariff-card__name">Стандарт</h3>
+            <div class="tariff-card__price">
+              <span class="tariff-card__price-value">1 990 ₽</span>
+              <span class="tariff-card__price-period">/ месяц</span>
+            </div>
+            <ul class="tariff-card__features">
+              <li>Безлимит консультаций</li>
+              <li>ИИ-диагностика</li>
+              <li>Приоритетная связь с врачом</li>
+              <li>Рецепты онлайн</li>
+            </ul>
+            <button class="btn btn--primary btn--full">Выбрать</button>
+          </div>
+        </article>
+
+        <!-- Карточка 3: Семейный -->
+        <article class="tariff-card" data-glitch>
+          <div class="tariff-card__inner">
+            <h3 class="tariff-card__name">Семейный</h3>
+            <div class="tariff-card__price">
+              <span class="tariff-card__price-value">2 990 ₽</span>
+              <span class="tariff-card__price-period">/ месяц</span>
+            </div>
+            <ul class="tariff-card__features">
+              <li>До 5 человек</li>
+              <li>Безлимит для всех</li>
+              <li>Педиатр включён</li>
+              <li>Экстренная связь 24/7</li>
+            </ul>
+            <button class="btn btn--outline btn--full">Выбрать</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <a href="#" class="footer__logo">
+          <span class="header__logo-text">Med</span><span class="header__logo-accent">Future</span>
+        </a>
+        <nav class="footer__nav">
+          <a href="#how-it-works">Как работает</a>
+          <a href="#coverage">Охват</a>
+          <a href="#tariffs">Тарифы</a>
+          <a href="#">Политика конфиденциальности</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 MedFuture. Все права защищены.</span>
+        <span class="footer__tagline">Медицина будущего уже здесь</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>
