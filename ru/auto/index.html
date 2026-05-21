@@ -34,7 +34,7 @@
           <li><a href="#contacts" class="header__nav-link">Контакты</a></li>
         </ul>
       </nav>
-      <button class="header__cta btn btn--sm btn--outline">Запись</button>
+      <a href="#calculator" class="header__cta btn btn--sm btn--outline">Запись</a>
       <button class="header__burger" aria-label="Меню" id="burger-btn">
         <span></span><span></span><span></span>
       </button>
@@ -63,8 +63,8 @@
         Профессиональный уход за кузовом и салоном. Защитные покрытия, полировка, химчистка — возвращаем新车ный вид.
       </p>
       <div class="hero__actions">
-        <button class="btn btn--primary btn--lg">Рассчитать стоимость</button>
-        <button class="btn btn--outline btn--lg">Смотреть работы</button>
+        <a href="#calculator" class="btn btn--primary btn--lg">Рассчитать стоимость</a>
+        <a href="#works" class="btn btn--outline btn--lg">Смотреть работы</a>
       </div>
     </div>
   </section>
@@ -129,20 +129,20 @@
 
       <div class="before-after__container" id="before-after">
         <div class="before-after__after">
-          <img
-            src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&q=80"
-            alt="После детейлинга"
-            class="before-after__img"
-          >
-          <span class="before-after__label before-after__label--after">После</span>
-        </div>
-        <div class="before-after__before" id="before-pane">
-          <img
-            src="https://images.unsplash.com/photo-1550355291-bbee04a92027?w=1200&q=80"
-            alt="До детейлинга"
-            class="before-after__img"
-          >
-          <span class="before-after__label before-after__label--before">До</span>
+            <img
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80"
+                alt="После детейлинга"
+                class="before-after__img"
+            >
+            <span class="before-after__label before-after__label--after">После</span>
+            </div>
+            <div class="before-after__before" id="before-pane">
+            <img
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80"
+                alt="До детейлинга"
+                class="before-after__img before-after__img--dirty"
+            >
+            <span class="before-after__label before-after__label--before">До</span>
         </div>
         <div class="before-after__handle" id="before-after-handle"></div>
       </div>
@@ -205,7 +205,7 @@
           <div class="calculator__result-details" id="calc-details">
             <span class="calculator__result-detail">Выберите параметры для расчёта</span>
           </div>
-          <button class="btn btn--primary btn--full">Записаться</button>
+          <a href="#contacts" class="btn btn--primary btn--full">Записаться</a>
         </div>
       </div>
     </div>
@@ -270,12 +270,12 @@
       </div>
 
       <div class="contacts__grid">
-        <form class="contacts__form">
-          <input type="text" class="contacts__input" placeholder="Ваше имя">
-          <input type="tel" class="contacts__input" placeholder="Телефон">
-          <input type="text" class="contacts__input" placeholder="Марка и модель авто">
-          <textarea class="contacts__textarea" placeholder="Что нужно сделать?"></textarea>
-          <button type="submit" class="btn btn--primary btn--lg btn--full">Отправить заявку</button>
+        <form class="contacts__form" id="contacts-form">
+        <input type="text" class="contacts__input" placeholder="Ваше имя" required>
+        <input type="tel" class="contacts__input" placeholder="Телефон" required>
+        <input type="text" class="contacts__input" placeholder="Марка и модель авто" required>
+        <textarea class="contacts__textarea" placeholder="Что нужно сделать?" required></textarea>
+        <button type="submit" class="btn btn--primary btn--lg btn--full">Отправить заявку</button>
         </form>
 
         <div class="contacts__info">
@@ -322,6 +322,16 @@
     </div>
   </footer>
 
+  <!-- Попап «Заявка отправлена» -->
+    <div class="popup" id="popup">
+    <div class="popup__overlay"></div>
+    <div class="popup__card">
+        <div class="popup__icon">✓</div>
+        <h3 class="popup__title">Заявка отправлена</h3>
+        <p class="popup__text">Мы перезвоним вам в течение 15 минут</p>
+        <button class="btn btn--primary btn--sm popup__close" id="popup-close">Хорошо</button>
+    </div>
+    </div>
   <!-- Скрипты -->
   <script src="js/main.js" type="module"></script>
 </body>
