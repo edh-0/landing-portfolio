@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luxury Auto Spa — премиум-детейлинг. Идеальный блеск, защита кузова, химчистка салона.">
+
+  <title>Luxury Auto Spa — Премиум-детейлинг</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        Luxury<span class="header__logo-accent">Auto</span>Spa
+      </a>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="#services" class="header__nav-link">Services</a></li>
+          <li><a href="#works" class="header__nav-link">Works</a></li>
+          <li><a href="#calculator" class="header__nav-link">Estimate</a></li>
+          <li><a href="#reviews" class="header__nav-link">Reviews</a></li>
+          <li><a href="#contacts" class="header__nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#calculator" class="header__cta btn btn--sm btn--outline">Book now</a>
+      <button class="header__burger" aria-label="Меню" id="burger-btn">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1920&q=80"
+        alt="Автомобиль после детейлинга"
+        class="hero__bg-image"
+        id="hero-image"
+      >
+      <div class="hero__glare" id="hero-glare"></div>
+    </div>
+    <div class="container hero__content">
+      <span class="hero__badge">Premium Detailing</span>
+      <h1 class="hero__title">
+        <span class="hero__title-line">Your car deserves</span>
+        <span class="hero__title-line"><span class="hero__title-accent">perfect</span></span>
+        <span class="hero__title-line">shine</span>
+      </h1>
+      <p class="hero__subtitle">
+        Professional body and interior care. Protective coatings, polishing, deep cleaning — showroom condition restored.
+      </p>
+      <div class="hero__actions">
+        <a href="#calculator" class="btn btn--primary btn--lg">Get estimate</a>
+        <a href="#works" class="btn btn--outline btn--lg">View works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Услуги -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Services</span>
+        <h2 class="section-header__title">What we<br>offer</h2>
+        <p class="section-header__desc">From comprehensive wash to ceramic coating</p>
+      </div>
+
+      <div class="services__grid">
+        <article class="service-card">
+          <span class="service-card__icon">🧼</span>
+          <h3 class="service-card__title">Premium Wash</h3>
+          <p class="service-card__desc">Touchless wash, warm air drying, rubber blackening, brake dust removal from rims.</p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-card__icon">✨</span>
+          <h3 class="service-card__title">Paint Polishing</h3>
+          <p class="service-card__desc">Abrasive and finishing polish. We remove swirl marks, holograms, and minor scratches. Mirror-like finish.</p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-card__icon">🛡️</span>
+          <h3 class="service-card__title">Ceramic / Glass Coating</h3>
+          <p class="service-card__desc">2–5 year protective coating. Hydrophobic, chemical resistant, UV and minor damage protection.</p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-card__icon">🪑</span>
+          <h3 class="service-card__title">Interior Detailing</h3>
+          <p class="service-card__desc">Deep cleaning of all surfaces: leather, alcantara, plastic, carpets. Odor elimination.</p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-card__icon">🪟</span>
+          <h3 class="service-card__title">Tinting & PPF</h3>
+          <p class="service-card__desc">Professional window tinting and paint protection film against rock chips.</p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-card__icon">🌟</span>
+          <h3 class="service-card__title">Full Detailing</h3>
+          <p class="service-card__desc">All inclusive: wash, polish, ceramic, interior, tinting. Factory-fresh look.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Работы «до/после» -->
+  <section class="before-after" id="works">
+    <div class="container">
+      <div class="section-header">
+      <span class="section-header__label">Our works</span>
+      <h2 class="section-header__title">Before & After</h2>
+      <p class="section-header__desc">Drag the slider to see the difference</p>
+      </div>
+
+      <div class="before-after__container" id="before-after">
+        <div class="before-after__after">
+            <img
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80"
+                alt="После детейлинга"
+                class="before-after__img"
+            >
+            <span class="before-after__label before-after__label--after">After</span>
+            </div>
+            <div class="before-after__before" id="before-pane">
+            <img
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80"
+                alt="До детейлинга"
+                class="before-after__img before-after__img--dirty"
+            >
+            <span class="before-after__label before-after__label--before">Before</span>
+        </div>
+        <div class="before-after__handle" id="before-after-handle"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Калькулятор -->
+  <section class="calculator" id="calculator">
+    <div class="container">
+      <div class="section-header">
+      <span class="section-header__label">Calculator</span>
+      <h2 class="section-header__title">Get your<br>estimate</h2>
+      <p class="section-header__desc">Select your car and service — instant price</p>
+      </div>
+
+      <div class="calculator__grid">
+        <div class="calculator__form">
+          <div class="calculator__field">
+            <label class="calculator__label" for="car-brand">Car brand</label>
+            <select class="calculator__select" id="car-brand">
+              <option value="">Select brand</option>
+              <option value="bmw">BMW</option>
+              <option value="mercedes">Mercedes-Benz</option>
+              <option value="audi">Audi</option>
+              <option value="porsche">Porsche</option>
+              <option value="lexus">Lexus</option>
+              <option value="tesla">Tesla</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="calculator__field">
+            <label class="calculator__label" for="car-class">Car class</label>
+            <select class="calculator__select" id="car-class">
+              <option value="">Select class</option>
+              <option value="sedan">Sedan</option>
+              <option value="suv">SUV</option>
+              <option value="coupe">Coupe</option>
+              <option value="sport">Sports car</option>
+              <option value="premium">Executive</option>
+            </select>
+          </div>
+
+          <div class="calculator__field">
+            <label class="calculator__label" for="service-type">Service</label>
+            <select class="calculator__select" id="service-type">
+              <option value="">Select service</option>
+              <option value="wash">Premium Wash</option>
+              <option value="polish">Paint Polishing</option>
+              <option value="ceramic">Ceramic Coating</option>
+              <option value="interior">Interior Detailing</option>
+              <option value="full">Full Detailing</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calculator__result" id="calc-result">
+          <span class="calculator__result-label">Total price</span>
+          <span class="calculator__result-price" id="calc-price">— $</span>
+          <div class="calculator__result-details" id="calc-details">
+            <span class="calculator__result-detail">Select options to calculate</span>
+          </div>
+          <a href="#contacts" class="btn btn--primary btn--full">Book now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Reviews</span>
+        <h2 class="section-header__title">What clients<br>say</h2>
+        <p class="section-header__desc">Car owners about our work</p>
+      </div>
+
+      <div class="reviews__grid">
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Brought my BMW X5 for full detailing. The result exceeded expectations — the body shines, the interior looks brand new. Special thanks for the ceramic coating, water beads perfectly.</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">👤</div>
+            <div>
+              <div class="review-card__name">Alex L.</div>
+              <div class="review-card__car">BMW X5</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Came with swirl marks after a bad car wash. The team did paint correction — now the body is flawless. Fair prices, top-notch service.</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">👤</div>
+            <div>
+              <div class="review-card__name">Jon K.</div>
+              <div class="review-card__car">Porsche Cayenne</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Interior detailing for Mercedes E-Class — removed odor, refreshed leather, everything tidy. Plus they blackened the rubber as a bonus. Will come back.</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">👤</div>
+            <div>
+              <div class="review-card__name">Anna C.</div>
+              <div class="review-card__car">Mercedes E-Class</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section class="contacts" id="contacts">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Contact</span>
+        <h2 class="section-header__title">Book your<br>detailing</h2>
+        <p class="section-header__desc">Leave a request — we'll call back within 15 minutes</p>
+      </div>
+
+      <div class="contacts__grid">
+        <form class="contacts__form" id="contacts-form">
+          <input type="text" class="contacts__input" placeholder="Your name" required>
+          <input type="tel" class="contacts__input" placeholder="Phone number" required>
+          <input type="text" class="contacts__input" placeholder="Car make & model" required>
+          <textarea class="contacts__textarea" placeholder="What needs to be done?" required></textarea>
+          <button type="submit" class="btn btn--primary btn--lg btn--full">Send request</button>
+        </form>
+
+        <div class="contacts__info">
+          <div class="contacts__info-item">
+            <span class="contacts__info-label">Address</span>
+            <span class="contacts__info-value">57 Leningradskoye Hwy, Moscow</span>
+          </div>
+          <div class="contacts__info-item">
+            <span class="contacts__info-label">Phone</span>
+            <span class="contacts__info-value">+7 (999) 123-45-67</span>
+          </div>
+          <div class="contacts__info-item">
+            <span class="contacts__info-label">Working hours</span>
+            <span class="contacts__info-value">Daily, 9:00 – 21:00</span>
+          </div>
+          <div class="contacts__info-item">
+            <span class="contacts__info-label">Response time</span>
+            <span class="contacts__info-value">Within 15 minutes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <a href="#" class="footer__logo">
+          Luxury<span class="header__logo-accent">Auto</span>Spa
+        </a>
+        <nav class="footer__nav">
+          <a href="#services">Services</a>
+          <a href="#works">Works</a>
+          <a href="#calculator">Estimate</a>
+          <a href="#reviews">Reviews</a> 
+          <a href="#contacts">Contact</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 Luxury Auto Spa. All rights reserved.</span>
+        <span class="footer__tagline">Your car deserves perfect shine</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Попап «Заявка отправлена» -->
+    <div class="popup" id="popup">
+    <div class="popup__overlay"></div>
+    <div class="popup__card">
+        <div class="popup__icon">✓</div>
+          <h3 class="popup__title">Request sent</h3>
+          <p class="popup__text">We'll call you back within 15 minutes</p>
+          <button class="btn btn--primary btn--sm popup__close" id="popup-close">OK</button>
+    </div>
+    </div>
+  <!-- Скрипты -->
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>
