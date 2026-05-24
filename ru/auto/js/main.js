@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Форма обратной связи
   const contactsForm = document.getElementById('contacts-form');
-  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCJj_neh_NZrfprw1LvxGdgK-Ji_N1vycoJNrtrkbzCA4tgFWd5erJ76mYuF92rUfJcg/exec';
+  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxDLrhtqPe2mpi8GpPA8znHYY1US4p2i7qFpxAfaFdeT2FV7BQeCAFG38CJNZJHbzuQsg/exec';
 
   contactsForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
