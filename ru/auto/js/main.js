@@ -106,14 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Форма обратной связи
+    // Форма обратной связи
   const contactsForm = document.getElementById('contacts-form');
-  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxDLrhtqPe2mpi8GpPA8znHYY1US4p2i7qFpxAfaFdeT2FV7BQeCAFG38CJNZJHbzuQsg/exec';
+  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyhEXSG6OiWiSSHz8quLB3dPvObFkvy3ufk3zP4T4OgGej18pYYgnr5nh2dOEoJEZwmHw/exec';
 
-  contactsForm?.addEventListener('submit', async (e) => {
+  contactsForm?.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Получаем кнопку и поля
     const submitBtn = contactsForm.querySelector('button[type="submit"]');
     const inputs = contactsForm.querySelectorAll('[required]');
     let allValid = true;
@@ -131,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!allValid) return;
 
-    // Собираем данные (поля идут в том же порядке, что и в HTML)
     const data = {
       name: inputs[0].value.trim(),
       phone: inputs[1].value.trim(),
@@ -139,38 +137,30 @@ document.addEventListener('DOMContentLoaded', () => {
       message: inputs[3].value.trim()
     };
 
-    // Блокируем кнопку, меняем текст
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Отправка...';
     submitBtn.disabled = true;
 
-    try {
-      // Реальная отправка на Google Apps Script
-      const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      });
-
-      if (!response.ok) throw new Error('Сетевая ошибка');
-
-      const result = await response.json();
-
-      if (result.result === 'success') {
-        // Успех — сбрасываем форму и показываем попап
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'text/plain' }
+    })
+    .then(() => {
+      // Даём 2 секунды на обработку, потом показываем успех
+      setTimeout(() => {
         contactsForm.reset();
         openPopup();
-      } else {
-        throw new Error(result.message || 'Ошибка сервера');
-      }
-    } catch (error) {
-      console.error('Ошибка отправки:', error);
-      alert('Что-то пошло не так. Попробуйте ещё раз или позвоните нам.');
-    } finally {
-      // В любом случае разблокируем кнопку
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 2000);
+    })
+    .catch(() => {
+      alert('Ошибка. Попробуйте ещё раз.');
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
-    }
+    });
   });
 
   // Анимация появления секций при скролле
